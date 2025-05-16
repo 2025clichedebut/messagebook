@@ -26,8 +26,8 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 0 25px 0;
-
     background-image: url('images/book-background.jpg');
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -35,13 +35,16 @@ body {
 .page-layout {
     display: flex;
     width: 85%;
+    max-width: 1400px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 -5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .page {
-    flex: 1;
     display: flex;
+    flex: 1;
     cursor: pointer;
+    aspect-ratio: 1 / 1.414;
+
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -50,8 +53,8 @@ body {
 }
 
 .page img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
     object-fit: cover;
     pointer-events: none;
     margin: 0;
@@ -108,42 +111,31 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px 0 15px 7px;
-    z-index: 2;
+    padding: 15px 0 25px 7px;
 }
 
 .bookmark {
     background-color: #f8f1e5;
     color: #5a4a3a;
-    width: 45px;
-    height: 100px;
+    width: 2.344vw;
+    height: 5.208vw;
     writing-mode: vertical-lr;
     font-family: 'KimjungchulGothic-Bold';
-    font-size: 15px;
+    font-size: 0.75vw;
     border-left: none;
     border-radius: 0 5px 5px 0;
-    box-shadow: 5px 3px rgba(0,0,0,0.1);
+    box-shadow: 5px 3px 3px rgba(0,0,0,0.15);
     cursor: pointer;
     padding: 3px 0 0 2px;
-    line-height: 20px;
+    line-height: 1.042vw;
     text-align: center;
     text-orientation: upright;
     overflow: hidden;
     transition: all 0.3s;
 }
 
-.bookmark:hover {
+.bookmark:hover, .bookmark.active {
     width: 65px !important;
-    transition: all 0.3s;
-    z-index: 3;
-    box-shadow: 7px 5px rgba(0,0,0,0.15);
-}
-
-.bookmark.active {
-    width: 65px !important;
-}
-
-.bookmark.active:hover {
 }
 
 .bookmark:nth-child(1) { background-color: #F7E5FF; transform: translateX(0); }
@@ -175,8 +167,89 @@ body {
     padding: 3px;
     border-radius: 3px;
     outline: none;
+    transition: all 0.3s;
 }
 
 #pageCounter input:focus {
     border-color: white;
+}
+
+/* 첫 페이지 */
+body.first-page .ebook-container {
+    background-image: none !important;
+}
+
+body.first-page .page-layout {
+    max-width: 595px;
+    justify-content: center;
+}
+
+body.first-page .right-page {
+    max-height: 93vw;
+    margin: auto;
+}
+
+body.first-page .right-page img {
+
+    object-fit: contain;
+}
+
+body.first-page .right-page::before {
+    display: none;
+}
+
+body.first-page .bookmark-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 0 25px 7px;
+    z-index: 1;
+}
+
+body.first-page .bookmark:nth-child(n) { transform: translateX(-7px); }
+
+/* 모바일 반응형 (최대 768px) */
+@media (max-width: 768px) {
+    body {
+        background-color: #E8E8E8;
+    }
+
+    .ebook-container {
+        width: auto;
+        background-image: none !important;
+        margin: 0;
+    }
+
+    .page-layout {
+        width: 100%;
+    }
+
+    .left-page {
+        display: none !important;
+    }
+
+    .bookmark-container {
+        position: fixed;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+    }
+
+    .bookmark {
+        width: 30px !important;
+        height: 60px !important;
+        font-size: 12px !important;
+        line-height: 14px !important;
+        margin: 3px 0;
+    }
+
+    .bookmark:hover, .bookmark.active {
+        width: 30px !important;
+    }
+
+    #pageCounter {
+        bottom: 20px;
+        font-size: 14px;
+    }
 }
