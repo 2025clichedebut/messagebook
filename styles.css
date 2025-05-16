@@ -122,7 +122,6 @@ body {
     writing-mode: vertical-rl;
     font-family: 'KimjungchulGothic-Bold';
     font-size: 0.75vw;
-    border-left: none;
     border-radius: 0 5px 5px 0;
     box-shadow: 5px 3px 3px rgba(0,0,0,0.15);
     cursor: pointer;
@@ -246,6 +245,7 @@ body.first-page .bookmark:nth-child(n) {
         font-size: 12px !important;
         line-height: 14px !important;
         margin: 3px 0;
+        border-radius: 5px;
     }
 
     .bookmark:hover, .bookmark.active {
