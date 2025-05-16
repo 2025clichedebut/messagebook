@@ -190,7 +190,6 @@ body.first-page .right-page {
 }
 
 body.first-page .right-page img {
-
     object-fit: contain;
 }
 
@@ -212,6 +211,8 @@ body.first-page .bookmark:nth-child(n) { transform: translateX(-7px); }
 @media (max-width: 768px) {
     body {
         background-color: #E8E8E8;
+        justify-content: start;
+        margin-left: 3vw;
     }
 
     .ebook-container {
@@ -230,7 +231,6 @@ body.first-page .bookmark:nth-child(n) { transform: translateX(-7px); }
 
     .bookmark-container {
         position: fixed;
-        right: 10px;
         top: 50%;
         transform: translateY(-50%);
         z-index: 100;
@@ -251,5 +251,10 @@ body.first-page .bookmark:nth-child(n) { transform: translateX(-7px); }
     #pageCounter {
         bottom: 20px;
         font-size: 14px;
+    }
+
+    body.first-page .right-page {
+        max-height: 56vh;
+        margin: auto;
     }
 }
