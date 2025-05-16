@@ -1,0 +1,182 @@
+@font-face {
+    font-family: 'KimjungchulGothic-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.ebook-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 25px 0;
+
+    background-image: url('images/book-background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.page-layout {
+    display: flex;
+    width: 85%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.page {
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    margin: 0;
+    display: block;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
+.left-page {
+    position: relative;
+}
+
+.left-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+}
+
+.right-page {
+    position: relative;
+}
+
+.right-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+}
+
+.bookmark-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 0 15px 7px;
+    z-index: 2;
+}
+
+.bookmark {
+    background-color: #f8f1e5;
+    color: #5a4a3a;
+    width: 45px;
+    height: 100px;
+    writing-mode: vertical-lr;
+    font-family: 'KimjungchulGothic-Bold';
+    font-size: 15px;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 5px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+    padding: 3px 0 0 2px;
+    line-height: 20px;
+    text-align: center;
+    text-orientation: upright;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.bookmark:hover {
+    width: 65px !important;
+    transition: all 0.3s;
+    z-index: 3;
+    box-shadow: 7px 5px rgba(0,0,0,0.15);
+}
+
+.bookmark.active {
+    width: 65px !important;
+}
+
+.bookmark.active:hover {
+}
+
+.bookmark:nth-child(1) { background-color: #F7E5FF; transform: translateX(0); }
+.bookmark:nth-child(2) { background: linear-gradient(#F7E5FF, #E4F0FE); transform: translateX(3px); }
+.bookmark:nth-child(3) { background-color: #E4F0FE; transform: translateX(6px); }
+.bookmark:nth-child(4) { background: linear-gradient(#E4F0FE, #FFE4EB); transform: translateX(9px); }
+.bookmark:nth-child(5) { background-color: #FFE4EB; transform: translateX(12px); }
+.bookmark:nth-child(6) { background: linear-gradient(#FFE4EB, #EFFFE5); transform: translateX(15px); }
+.bookmark:nth-child(7) { background-color: #EFFFE5; transform: translateX(18px); }
+
+#pageCounter {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#pageCounter input {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    outline: none;
+}
+
+#pageCounter input:focus {
+    border-color: white;
+}
