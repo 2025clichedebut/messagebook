@@ -115,6 +115,23 @@ function handlePageNavigation(event) {
     }
 }
 
+// 방향키 이동
+function handleDesktopKeyPress(event) {
+    if (!isMobile()) {
+        if (event.key === 'ArrowLeft') {
+            if (currentPage > 0) {
+                currentPage -= 2;
+                updatePages();
+            }
+        } else if (event.key === 'ArrowRight') {
+            if (currentPage < images.length - 2) {
+                currentPage += 2;
+                updatePages();
+            }
+        }
+    }
+}
+
 // 북마크 핸들러
 function handleBookmarkClick() {
     const targetPage = parseInt(this.dataset.page);
@@ -140,11 +157,10 @@ function isMobile() {
 
 // 모바일 페이지 클릭 핸들러
 function handleMobilePageClick(e) {
-    if (e.clientX < window.innerWidth / 2) {
-        // 왼쪽 절반 클릭 - 이전 페이지
+    const pageX = e.offsetX;
+    if (pageX < rightPage.clientWidth / 2) {
         currentPage = Math.max(0, currentPage - 1);
     } else {
-        // 오른쪽 절반 클릭 - 다음 페이지
         currentPage = Math.min(images.length - 1, currentPage + 1);
     }
     updateMobilePages();
@@ -159,6 +175,11 @@ function updateMobilePages() {
 
 // 기존 이벤트 리스너 수정
 function initEventListeners() {
+    leftPage.removeEventListener('click', handlePageNavigation);
+    rightPage.removeEventListener('click', handlePageNavigation);
+    rightPage.removeEventListener('click', handleMobilePageClick);
+    document.removeEventListener('keydown', handleDesktopKeyPress);
+
     if(isMobile()) {
         // 모바일 전용 이벤트
         rightPage.addEventListener('click', (e) => {
@@ -174,10 +195,12 @@ function initEventListeners() {
                 handlePageNavigation(e);
             }
         });
+        document.addEventListener('keydown', handleDesktopKeyPress);
     }
 }
 
 function init() {
+    window.addEventListener('resize', initEventListeners);
     preloadImages();
     initEventListeners();
     updatePageCounter();
