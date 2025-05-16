@@ -119,14 +119,14 @@ body {
     color: #5a4a3a;
     width: 2.344vw;
     height: 5.208vw;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     font-family: 'KimjungchulGothic-Bold';
     font-size: 0.75vw;
     border-left: none;
     border-radius: 0 5px 5px 0;
     box-shadow: 5px 3px 3px rgba(0,0,0,0.15);
     cursor: pointer;
-    padding: 3px 0 0 2px;
+    padding: 3px 2px 0 0;
     line-height: 1.042vw;
     text-align: center;
     text-orientation: upright;
@@ -138,13 +138,13 @@ body {
     width: 65px !important;
 }
 
-.bookmark:nth-child(1) { background-color: #F7E5FF; transform: translateX(0); }
-.bookmark:nth-child(2) { background: linear-gradient(#F7E5FF, #E4F0FE); transform: translateX(3px); }
-.bookmark:nth-child(3) { background-color: #E4F0FE; transform: translateX(6px); }
-.bookmark:nth-child(4) { background: linear-gradient(#E4F0FE, #FFE4EB); transform: translateX(9px); }
-.bookmark:nth-child(5) { background-color: #FFE4EB; transform: translateX(12px); }
-.bookmark:nth-child(6) { background: linear-gradient(#FFE4EB, #EFFFE5); transform: translateX(15px); }
-.bookmark:nth-child(7) { background-color: #EFFFE5; transform: translateX(18px); }
+.bookmark:nth-child(1) { transform: translateX(0); background-color: #F7E5FF; }
+.bookmark:nth-child(2) { transform: translateX(3px); background: linear-gradient(#F7E5FF, #E4F0FE); }
+.bookmark:nth-child(3) { transform: translateX(6px); background-color: #E4F0FE; }
+.bookmark:nth-child(4) { transform: translateX(9px); background: linear-gradient(#E4F0FE, #FFE4EB); }
+.bookmark:nth-child(5) { transform: translateX(12px); background-color: #FFE4EB; }
+.bookmark:nth-child(6) { transform: translateX(15px); background: linear-gradient(#FFE4EB, #EFFFE5); }
+.bookmark:nth-child(7) { transform: translateX(18px); background-color: #EFFFE5; }
 
 #pageCounter {
     position: fixed;
