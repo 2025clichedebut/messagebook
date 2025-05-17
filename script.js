@@ -145,8 +145,9 @@ function handleBookmarkClick() {
 // 현재 페이지에 해당하는 북마크 활성화 함수
 function updateActiveBookmark() {
     bookmark.forEach(bm => {
-        const bookmarkPage = parseInt(bm.dataset.page);
-        const isActive = currentPage >= bookmarkPage && currentPage < bookmarkPage + 1;
+        const startPage = parseInt(bm.dataset.page);
+        const endPage = parseInt(bm.dataset.endPage);
+        const isActive = currentPage >= startPage && currentPage <= endPage;
         bm.classList.toggle('active', isActive);
     });
 }
