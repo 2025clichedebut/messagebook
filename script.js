@@ -22,7 +22,7 @@ const bookmark = document.querySelectorAll('.bookmark');
 document.body.classList.add('first-page');
 
 // 전역 상태
-const images = generateImagePaths('photo', 0, 120);
+const images = generateImagePaths('photo', 0, 126);
 let currentPage = 0;
 const imageCache = {};
 
