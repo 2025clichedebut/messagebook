@@ -51,7 +51,7 @@ function goToPage(pageNumber) {
 
 // 페이지 업데이트
 function updatePages() {
-    if(isMobile()) {
+    if (isMobile()) {
         updateMobilePages();
         return;
     }
@@ -64,11 +64,12 @@ function updatePages() {
     document.body.classList.toggle('first-page', isFirstPage);
 
     if (isFirstPage) {
-        leftPage.style.display = 'none';
+        leftPage.style.visibility = 'hidden';
         rightImage.src = images[0];
     } else {
+        leftPage.style.visibility = 'visible';
         leftPage.style.display = 'flex';
-        leftImage.src = images[currentPage-1];
+        leftImage.src = images[currentPage - 1];
         rightImage.src = images[currentPage] || '';
     }
 
@@ -107,10 +108,12 @@ function handlePageNavigation(event) {
 
     if (isLeftPage && currentPage > 0) {
         currentPage -= 2;
+        console.log('이전페이지');
         updatePages();
     }
     else if (!isLeftPage && currentPage < images.length - 2) {
         currentPage += 2;
+        console.log('다음페이지');
         updatePages();
     }
 }
@@ -173,30 +176,40 @@ function updateMobilePages() {
     updateActiveBookmark();
 }
 
-// 기존 이벤트 리스너 수정
-function initEventListeners() {
-    leftPage.removeEventListener('click', handlePageNavigation);
-    rightPage.removeEventListener('click', handlePageNavigation);
-    rightPage.removeEventListener('click', handleMobilePageClick);
-    document.removeEventListener('keydown', handleDesktopKeyPress);
-
-    if(isMobile()) {
-        // 모바일 전용 이벤트
-        rightPage.addEventListener('click', (e) => {
-            if (!e.target.closest('.bookmark')) {
-                handleMobilePageClick(e);
+const handleClick = (e) => {
+    if (!e.target.closest('.bookmark')) {
+        if (isMobile()) {
+            handleMobilePageClick(e);
+        } else {
+            if (currentPage % 2 !== 0) {
+                currentPage++;
             }
-        });
-    } else {
-        // 데스크탑 전용 이벤트
-        leftPage.addEventListener('click', handlePageNavigation);
-        rightPage.addEventListener('click', (e) => {
-            if (!e.target.closest('.bookmark')) {
-                handlePageNavigation(e);
-            }
-        });
-        document.addEventListener('keydown', handleDesktopKeyPress);
+            handlePageNavigation(e);
+        }
     }
+};
+
+const handleKeydown = (event) => {
+    if (!isMobile()) {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            if (currentPage % 2 !== 0 && event.key === 'ArrowRight') {
+                currentPage++;
+            }
+            handleDesktopKeyPress(event);
+        }
+    }
+};
+
+function initEventListeners() {
+    // 기존 이벤트 리스너 제거 (혹시 모를 중복 방지)
+    leftPage.removeEventListener('click', handleClick);
+    rightPage.removeEventListener('click', handleClick);
+    document.removeEventListener('keydown', handleKeydown);
+
+    // 이벤트 리스너를 한 번만 등록
+    leftPage.addEventListener('click', handleClick);
+    rightPage.addEventListener('click', handleClick);
+    document.addEventListener('keydown', handleKeydown);
 }
 
 function init() {

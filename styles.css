@@ -179,11 +179,12 @@ body.first-page .ebook-container {
 }
 
 body.first-page .page-layout {
-    max-width: 595px;
+    box-shadow: none;
     justify-content: center;
 }
 
 body.first-page .right-page {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 -5px 15px rgba(0, 0, 0, 0.1);
     max-height: 93vw;
     margin: auto;
 }
