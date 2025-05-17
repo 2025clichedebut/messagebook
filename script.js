@@ -1,5 +1,5 @@
 // 이미지 경로 동적 생성
-function generateImagePaths(prefix, start, end, extension = 'webp') {
+function generateImagePaths(prefix, start, end, extension = 'jpg') {
     const images = [];
     for (let i = start; i <= end; i++) {
         images.push(`images/${prefix}${i.toString().padStart(3, '0')}.${extension}`);

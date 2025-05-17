@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'KimjungchulGothic-Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'NoonnuBasicGothicRegular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
@@ -120,8 +120,8 @@ body {
     width: 2.344vw;
     height: 5.208vw;
     writing-mode: vertical-rl;
-    font-family: 'KimjungchulGothic-Bold';
-    font-size: 0.75vw;
+    font-family: 'NoonnuBasicGothicRegular';
+    font-size: 0.9vw;
     border-radius: 0 5px 5px 0;
     box-shadow: 5px 3px 3px rgba(0,0,0,0.15);
     cursor: pointer;
