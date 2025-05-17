@@ -21,11 +21,11 @@ body {
 
 .ebook-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1450px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 0 25px 0;
+    margin: 0 0 35px 0;
     background-image: url('images/book-background.jpg');
     background-size: contain;
     background-position: center;
