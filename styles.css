@@ -134,11 +134,11 @@ body {
 }
 
 .bookmark:hover, .bookmark.active {
-    width: 65px !important;
+    width: 3.385vw !important;
 }
 
-.bookmark:nth-child(1) { transform: translateX(0); background-color: #F7E5FF; }
-.bookmark:nth-child(2) { transform: translateX(3px); background: linear-gradient(#F7E5FF, #E4F0FE); }
+.bookmark:nth-child(1) { transform: translateX(0); background-color: #F7E5FF; line-height: 0.8vw; }
+.bookmark:nth-child(2) { transform: translateX(3px); background: linear-gradient(#F7E5FF, #E4F0FE); line-height: 0.8vw; }
 .bookmark:nth-child(3) { transform: translateX(6px); background-color: #E4F0FE; }
 .bookmark:nth-child(4) { transform: translateX(9px); background: linear-gradient(#E4F0FE, #FFE4EB); }
 .bookmark:nth-child(5) { transform: translateX(12px); background-color: #FFE4EB; }
