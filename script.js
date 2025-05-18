@@ -137,9 +137,18 @@ function handleDesktopKeyPress(event) {
 
 // 북마크 핸들러
 function handleBookmarkClick() {
-    const targetPage = parseInt(this.dataset.page);
-    currentPage = targetPage % 2 === 0 ? targetPage : targetPage + 1;
-    updatePages();
+    if (!isMobile()) {
+        const targetPage = parseInt(this.dataset.page);
+        currentPage = targetPage % 2 === 0 ? targetPage : targetPage + 1;
+        updatePages();
+    } else {
+        const targetPage = parseInt(this.dataset.page);
+        currentPage = targetPage - 1;
+        if (targetPage === 2) {
+            currentPage = targetPage;
+        }
+        updatePages();
+    }
 }
 
 // 현재 페이지에 해당하는 북마크 활성화 함수
@@ -202,12 +211,10 @@ const handleKeydown = (event) => {
 };
 
 function initEventListeners() {
-    // 기존 이벤트 리스너 제거 (혹시 모를 중복 방지)
     leftPage.removeEventListener('click', handleClick);
     rightPage.removeEventListener('click', handleClick);
     document.removeEventListener('keydown', handleKeydown);
 
-    // 이벤트 리스너를 한 번만 등록
     leftPage.addEventListener('click', handleClick);
     rightPage.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleKeydown);
