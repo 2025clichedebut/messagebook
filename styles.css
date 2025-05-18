@@ -125,7 +125,7 @@ body {
     border-radius: 0 5px 5px 0;
     box-shadow: 5px 3px 3px rgba(0,0,0,0.15);
     cursor: pointer;
-    padding: 3px 2px 0 0;
+    padding: 2px 4px 2px 0;
     line-height: 1.042vw;
     text-align: center;
     text-orientation: upright;
@@ -137,8 +137,8 @@ body {
     width: 3.385vw !important;
 }
 
-.bookmark:nth-child(1) { transform: translateX(0); background-color: #F7E5FF; line-height: 0.8vw; }
-.bookmark:nth-child(2) { transform: translateX(3px); background: linear-gradient(#F7E5FF, #E4F0FE); line-height: 0.8vw; }
+.bookmark:nth-child(1) { transform: translateX(0); background-color: #F7E5FF; line-height: 0.7vw; }
+.bookmark:nth-child(2) { transform: translateX(3px); background: linear-gradient(#F7E5FF, #E4F0FE); line-height: 0.7vw; }
 .bookmark:nth-child(3) { transform: translateX(6px); background-color: #E4F0FE; }
 .bookmark:nth-child(4) { transform: translateX(9px); background: linear-gradient(#E4F0FE, #FFE4EB); word-spacing: 0.9vw; }
 .bookmark:nth-child(5) { transform: translateX(12px); background-color: #FFE4EB; }
